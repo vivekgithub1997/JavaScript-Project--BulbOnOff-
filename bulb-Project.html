@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulb-project</title>
+
+    <style>
+   
+   body {
+    height: 100px;
+    display: grid;
+    place-items: center;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    height: 50px;
+  background:#0e444f;
+}
+
+.check-box {
+  transform: scale(2);
+}
+
+input[type="checkbox"] {
+    position: relative;
+    appearance: none;
+    width: 100px;
+    height: 50px;
+    background: #eb5708;
+    border-radius: 50px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+input:checked[type="checkbox"] {
+    background: #12c563;
+    
+}
+
+input[type="checkbox"]::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 50px;
+    top: 0;
+    left: 0;
+    background: #d4dbdc;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(68, 7, 235, 0.2);
+    transform: scale(1.1);
+    transition: 0.6s;
+}
+
+input:checked[type="checkbox"]::after {
+    left: 50%;
+    
+}
+   
+  .h1{
+     color: #12c563;
+     border: #eb5708;
+    margin-top: 10px;
+    padding-bottom: 30px;
+  }
+   
+  #blink {
+                color: #badc14;
+                font-size: 25px;
+                font-weight: bold;
+                transition: 0.5s;
+          }
+
+  #bulbImg{
+    margin-top: 30px;
+    width: 10cm;
+    height: 13cm;
+  }
+    </style>
+</head>
+<body>
+  <blink id="blink">Bulb On Off Project </blink>
+    <h1 class="h1"></h1>
+    <div class="check-box">
+      <input id="OnOffSwitch" type="checkbox" onclick="OnOff()">
+    </div>
+
+     <div id="bulb">
+       <img id="bulbImg" src="bulbOff.jpg" alt="">
+
+     </div>
+ 
+     <script>
+
+       const switchOn=() =>{
+           
+      let imgObj =  document.getElementById("bulbImg");
+
+      imgObj.setAttribute("src", "bulbOn.jpg");
+
+       }
+
+       const switchOff=()=>{
+        
+        let imgObj = document.getElementById("bulbImg");
+
+        imgObj.setAttribute("src","bulbOff.jpg");
+
+       }
+        
+       const OnOff=() =>{
+
+        let imgObj = document.getElementById("bulbImg");
+        let imgSrc =    imgObj.getAttribute("src");
+
+        if(imgSrc == "bulbOff.jpg"){
+        
+            let imgObj =  document.getElementById("bulbImg");
+
+            imgObj.setAttribute("src", "bulbOn.jpg");
+
+            let innerText = document.getElementById("OnOffSwitch");
+
+              innerText.innerHTML="OFF";
+           
+        }
+        else{
+
+            let imgObj = document.getElementById("bulbImg");
+
+                  imgObj.setAttribute("src","bulbOff.jpg");    
+                  let innerText = document.getElementById("OnOffSwitch");
+
+                  innerText.innerHTML="ON"
+        }
+
+       }
+
+
+       var blink = document.getElementById('blink');
+            setInterval(function() {
+                blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+            }, 150);
+
+     </script>
+</body>
+</html>
